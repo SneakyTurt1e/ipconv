@@ -5,15 +5,15 @@ import sys
 def main():
 	print('Origin IP:%s'%args.ip)
 	BinIP = Decimal2Bin(args.ip)
+	tmp = int(BinIP,2)
 	start = Convert()
 	if args.type == 'bin':
-		resqult = start.Bin2Decimal(BinIP)
-		print('Convert IP:%s'%resqult)
+		print('Convert IP:%s'%tmp)
 	elif args.type == 'oct':
-		resqult = start.Bin2Octal(BinIP)
+		resqult = start.Bin2Octal(tmp)
 		print('Convert IP:%s'%resqult)
 	else:
-		resqult = start.Bin2Hex(BinIP)
+		resqult = start.Bin2Hex(tmp)
 		print('Convert IP:%s'%resqult)
 
 
@@ -31,14 +31,10 @@ def Decimal2Bin(ip):
 		return binip
 
 class Convert:
-	def Bin2Decimal(self,BinIP):
-		return int(BinIP,2)
 	def Bin2Octal(self,BinIP):
-		tmp = int(BinIP,2)
-		return str(oct(tmp))[2:].zfill(12)
+		return str(oct(BinIP))[2:].zfill(12)
 	def Bin2Hex(self,BinIP):
-		tmp = int(BinIP,2)
-		return hex(tmp)
+		return hex(BinIP)
 
 
 
